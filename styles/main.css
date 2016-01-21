@@ -1,0 +1,27 @@
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.whole-width{
+	width:100%;
+}
+
+.mtl{
+	margin-top: 30px;
+}
+.mll{
+	margin-left: 30px;
+}
+
+.avatar-img{
+	height: 50px;
+	width: 50px;
+}

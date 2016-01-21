@@ -1,0 +1,40 @@
+{
+  "name": "ng2-app-fetch-github-issues",
+  "version": "1.0.0",
+  "description": "An application which will fetch github repo's issues. This is an Angular 2.0 demo app",
+  "main": "app.js",
+  "dependencies": {
+    "angular2": "^2.0.0-beta.1",
+    "bootstrap": "^3.3.6",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.13",
+    "jquery": "^2.2.0",
+    "live-server": "^0.8.2",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "^5.0.0-beta.0",
+    "systemjs": "^0.19.5",
+    "typescript": "^1.6.2",
+    "zone.js": "^0.5.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metalshan/ng2-app-fetch-github-issues.git"
+  },
+  "keywords": [
+    "ng2",
+    "angular",
+    "2",
+    "angular",
+    "js"
+  ],
+  "author": "Paul Shan <go2mailshan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/metalshan/ng2-app-fetch-github-issues/issues"
+  },
+  "homepage": "https://github.com/metalshan/ng2-app-fetch-github-issues"
+}
