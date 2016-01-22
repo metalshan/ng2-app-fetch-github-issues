@@ -10,6 +10,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 	directives: [CORE_DIRECTIVES],
 	template: `
 		<div class="whole-width mtl">
+			<span>Total open issues: {{totalOpenIssuesNumber}}</span>
 			<ul>
 				<li *ngFor="#issue of displayList">{{issue.title}}</li>
 			</ul>
@@ -30,7 +31,7 @@ export class IssueList implements OnChanges{
 	displayList: string[];
 	startDate: Date;
 	endDate: Date;
-
+	totalOpenIssuesNumber: number = 0;
 
 	//on input changes
 	ngOnChanges(inputChanges) {
@@ -41,13 +42,15 @@ export class IssueList implements OnChanges{
 	//refreshed on input changes
 	//this filters the issues
 	refresh(){
+		this.totalOpenIssuesNumber = 0;
 		var list = this.issues;
 		if(list){
 			var filteredIssues = [];
 			list.forEach(function (issue) {
 				var issueOpeningDate = new Date(issue.created_at)
 				if (issue.state.toLowerCase() === this.status.toLowerCase()){
-					if (issueOpeningDate > this.endDate && issueOpeningDate <= this.startDate)
+					this.totalOpenIssuesNumber++;
+					if(issueOpeningDate > this.endDate && issueOpeningDate <= this.startDate)
 						filteredIssues.push(issue);
 				}
 			}.bind(this))
