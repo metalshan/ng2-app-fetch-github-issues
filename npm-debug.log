@@ -1,0 +1,101 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.3
+4 verbose readDependencies loading dependencies from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/package.json
+5 verbose install where, deps [ '/Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues',
+5 verbose install   [ 'angular2',
+5 verbose install     'bootstrap',
+5 verbose install     'es6-promise',
+5 verbose install     'es6-shim',
+5 verbose install     'jquery',
+5 verbose install     'live-server',
+5 verbose install     'reflect-metadata',
+5 verbose install     'rxjs',
+5 verbose install     'systemjs',
+5 verbose install     'typescript',
+5 verbose install     'zone.js' ] ]
+6 verbose install where, peers [ '/Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues',
+6 verbose install   [] ]
+7 verbose installManyTop reading for lifecycle /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/package.json
+8 info preinstall ng2-app-fetch-github-issues@1.0.0
+9 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/angular2/package.json
+10 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/bootstrap/package.json
+11 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/es6-promise/package.json
+12 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/es6-shim/package.json
+13 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/jquery/package.json
+14 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/live-server/package.json
+15 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/reflect-metadata/package.json
+16 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/rxjs/package.json
+17 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/systemjs/package.json
+18 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/typescript/package.json
+19 verbose installManyTop reading scoped package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/zone.js/package.json
+20 verbose readDependencies loading dependencies from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/package.json
+21 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/angular2/package.json
+22 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/bootstrap/package.json
+23 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/es6-promise/package.json
+24 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/es6-shim/package.json
+25 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/jquery/package.json
+26 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/live-server/package.json
+27 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/reflect-metadata/package.json
+28 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/rxjs/package.json
+29 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/systemjs/package.json
+30 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/typescript/package.json
+31 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/zone.js/package.json
+32 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/.bin/live-server/package.json
+33 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/.bin/tsc/package.json
+34 verbose targetResolver reading package data from /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/node_modules/.bin/tsserver/package.json
+35 verbose already installed skipping angular2@^2.0.0-beta.1 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+36 verbose already installed skipping bootstrap@^3.3.6 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+37 verbose already installed skipping es6-promise@^3.0.2 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+38 verbose already installed skipping es6-shim@^0.33.13 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+39 verbose already installed skipping jquery@^2.2.0 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+40 verbose already installed skipping live-server@^0.8.2 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+41 verbose already installed skipping reflect-metadata@^0.1.2 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+42 verbose already installed skipping rxjs@^5.0.0-beta.0 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+43 verbose already installed skipping systemjs@^0.19.5 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+44 verbose already installed skipping typescript@^1.6.2 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+45 verbose already installed skipping zone.js@^0.5.10 /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+46 silly install resolved []
+47 info build /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+48 info linkStuff ng2-app-fetch-github-issues@1.0.0
+49 silly linkStuff ng2-app-fetch-github-issues@1.0.0 has /Users/prasenjit/Documents/personal/projects as its parent node_modules
+50 verbose linkBins ng2-app-fetch-github-issues@1.0.0
+51 verbose linkMans ng2-app-fetch-github-issues@1.0.0
+52 verbose rebuildBundles ng2-app-fetch-github-issues@1.0.0
+53 verbose rebuildBundles [ '.bin',
+53 verbose rebuildBundles   'angular2',
+53 verbose rebuildBundles   'bootstrap',
+53 verbose rebuildBundles   'es6-promise',
+53 verbose rebuildBundles   'es6-shim',
+53 verbose rebuildBundles   'jquery',
+53 verbose rebuildBundles   'live-server',
+53 verbose rebuildBundles   'reflect-metadata',
+53 verbose rebuildBundles   'rxjs',
+53 verbose rebuildBundles   'systemjs',
+53 verbose rebuildBundles   'typescript',
+53 verbose rebuildBundles   'zone.js' ]
+54 info install ng2-app-fetch-github-issues@1.0.0
+55 info postinstall ng2-app-fetch-github-issues@1.0.0
+56 info prepublish ng2-app-fetch-github-issues@1.0.0
+57 verbose validateInstall loading /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues/package.json for validation
+58 verbose stack Error: The package reflect-metadata@0.1.3 does not satisfy its siblings' peerDependencies requirements!
+58 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:125:32
+58 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:268:7
+58 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:142:5
+58 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+58 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+58 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+58 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+58 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+58 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+58 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+59 verbose cwd /Users/prasenjit/Documents/personal/projects/ng2-app-fetch-github-issues
+60 error Darwin 15.0.0
+61 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install"
+62 error node v4.2.3
+63 error npm  v2.14.7
+64 error code EPEERINVALID
+65 error peerinvalid The package reflect-metadata@0.1.3 does not satisfy its siblings' peerDependencies requirements!
+65 error peerinvalid Peer angular2@2.0.0-beta.1 wants reflect-metadata@0.1.2
+66 verbose exit [ 1, true ]

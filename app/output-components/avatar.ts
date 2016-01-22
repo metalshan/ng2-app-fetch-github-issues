@@ -1,10 +1,13 @@
 
-import {Component, Input, OnChanges} from 'angular2/core';
+import {Component, Input, OnChanges, NgIf} from 'angular2/core';
+import {Loader} from '../loader'
 @Component({
   	selector: 'avatar',
-	template: `
+		directives: [Loader, NgIf],
+		template: `
 		<div>
-		<img src="{{avatarUrl}}" class="avatar-img"/>
+			<loader></loader>
+		<img src="{{avatarUrl}}" class="avatar-img" />
 		</div>
 	    `
 })
@@ -14,7 +17,7 @@ export class Avatar implements OnChanges{
 
 	githubUserInfoApi = "https://api.github.com/users/:userName";
 	avatarUrl: string;
-
+	isDetailsFetchingInProfress: bool = false;
 	ngOnChanges(inputChanges) {
 		if(this.userName)
 			this.createAvatar();
@@ -27,10 +30,12 @@ export class Avatar implements OnChanges{
 	}
 
 	fetchGithubUserDetails(){
+		this.isDetailsFetchingInProfress = true;
 		return $.ajax(this.githubUserInfoApi.replace(':userName', this.userName));
 	}
 
 	fetchAvatar(userInfo){
+		this.isDetailsFetchingInProfress = false;
 		this.avatarUrl = userInfo && userInfo.avatar_url;
 	}
 }
