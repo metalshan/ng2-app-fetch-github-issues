@@ -1,4 +1,9 @@
+/**
+	Issue shower Deals with the menu links and displaying issues according to the 
+	selected time frame from the menu
 
+
+*/
 import {Component, Input, OnChanges} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {Loader} from '../loader';
@@ -25,23 +30,28 @@ import {IssueList} from './issue-list';
 })
 
 export class IssueShower implements OnChanges{
+	//general inputs to be taken from the parent
 	@Input() userName:string;
 	@Input() repoName: string;
 
 	githubRepoInfoApi = "https://api.github.com/repos/:userName/:repoName/issues";
 
+	//variables
 	issues: string[];
 	isDetailsFetchingInProfress: bool = false;
 	selectedStart: string = "0";
 	selectedEnd: string = "1";
 	displayIssueType: string = "open";
 
+
+	//on input change
 	ngOnChanges(inputChanges) {
 		this.issues = [];
 		if(this.userName && this.repoName)
 			this.fetchIssues();
 	}
 
+	//to be called on selected timeframe changed
 	selectionChanged(event){
 		var start = event.target.getAttribute('start');
 		var end = event.target.getAttribute('end');
@@ -50,6 +60,8 @@ export class IssueShower implements OnChanges{
 	}
 
 	//utils
+
+	//to fetch the issues basing on repoUrl change (which actually end up as userName and repoName change)
 	fetchIssues(){
 		this.isDetailsFetchingInProfress = true;
 		var apiUrl = this.githubRepoInfoApi.replace(":userName", this.userName);
@@ -57,9 +69,6 @@ export class IssueShower implements OnChanges{
 
 		var issuesFetchingPromise = $.ajax(apiUrl);
 		issuesFetchingPromise.then(function(data) {
-			//console.log(response)
-			//var data = JSON.parse(response);
-			//message property comes only for error
 			if(!data.message){
 				this.issues = data;
 			}

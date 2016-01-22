@@ -1,3 +1,9 @@
+/**
+	This is the output shower component; to show the output basing on the repo url, given
+	This contains an avatar component to show the avatar of the repo owner
+	This also contains an issue shower which shows the issue list
+*/
+
 import {Component, Input, OnChanges} from 'angular2/core';
 import {Avatar} from './output-components/avatar';
 import {IssueShower} from './output-components/issue-shower';
@@ -14,11 +20,15 @@ import {IssueShower} from './output-components/issue-shower';
 })
 
 export class OutputShower implements OnChanges {
+	//repoUrl is taken from the parent
 	@Input() repoUrl: string;
 
-	public userName: string;
-	public repoName: string;
+	//userName and repoName, which are extracted by operations
+	userName: string;
+	repoName: string;
 
+
+	//This is called whenevr the input or repoUrl is changed
 	ngOnChanges(inputChanges){
 		this.reset();
 		this.userName = this.findUserName();
@@ -26,11 +36,14 @@ export class OutputShower implements OnChanges {
 	}
 
 	//utility functions
+
+	//reset the properties
 	reset(){
 		this.userName = null;
 		this.repoName = null;
 	}
 
+	//to get the userName from repoUrl
 	findUserName(){
 		var repoUrl = this.repoUrl; 
 		var userNameRegexp = /github.com[/,:](.*)\//;
@@ -38,6 +51,7 @@ export class OutputShower implements OnChanges {
 		return match && match[1].split('/')[0];
 	}
 
+	//get the repoName
 	findRepoName(){
 		var repoUrl = this.repoUrl; 
 		var userName = this.userName || this.findUserName();

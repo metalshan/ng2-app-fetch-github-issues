@@ -1,4 +1,7 @@
-
+/**
+	The avatar component
+	Just taked the userName and shows the avatar after calling the userDetails
+*/
 import {Component, View, Input, OnChanges} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {Loader} from '../loader'
@@ -20,6 +23,8 @@ export class Avatar implements OnChanges{
 	githubUserInfoApi = "https://api.github.com/users/:userName";
 	avatarUrl: string;
 	isDetailsFetchingInProfress: bool = false;
+
+	//to be called on input changes
 	ngOnChanges(inputChanges) {
 		this.avatarUrl = null;
 		if(this.userName)
@@ -32,11 +37,13 @@ export class Avatar implements OnChanges{
 		userDetailsPromise.then(this.fetchAvatar.bind(this);
 	}
 
+	//fetch the user details 
 	fetchGithubUserDetails(){
 		this.isDetailsFetchingInProfress = true;
 		return $.ajax(this.githubUserInfoApi.replace(':userName', this.userName));
 	}
 
+	//get the avatar image link from the fetched user details
 	fetchAvatar(userInfo){
 		this.isDetailsFetchingInProfress = false;
 		this.avatarUrl = userInfo && userInfo.avatar_url;

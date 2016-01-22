@@ -1,3 +1,7 @@
+/**
+	This displayed the selected list
+*/
+
 import {Component, Input, OnChanges} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 
@@ -15,21 +19,27 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 })
 
 export class IssueList implements OnChanges{
+	//all inputs
 	@Input() start: string;
 	@Input() end:string;
 	@Input() status: string;
 	@Input() issues: string[];
 
+
+	//variables
 	displayList: string[];
-	today: Date = new Date();
 	startDate: Date;
 	endDate: Date;
 
+
+	//on input changes
 	ngOnChanges(inputChanges) {
 		this.setupStartEndDate();
 		this.refresh();
 	}
 
+	//refreshed on input changes
+	//this filters the issues
 	refresh(){
 		var list = this.issues;
 		if(list){
@@ -48,6 +58,8 @@ export class IssueList implements OnChanges{
 		}
 	}
 
+
+	//sets up the date bounderies
 	setupStartEndDate(){
 		var start = this.start;
 		var end = this.end;
@@ -55,11 +67,11 @@ export class IssueList implements OnChanges{
 		var startDate = new Date();
 		var endDate = new Date();
 
-		startDate.setDate(startDate.getDate() - start);
+		startDate.setDate(startDate.getDate() - start); //setting the startDate as JS Date object
 		this.startDate = startDate;
 
 		if (!end)
-			this.endDate = new Date(-8640000000000000);
+			this.endDate = new Date(-8640000000000000); //The oldest possible date in JavaScript
 		else{
 			endDate.setDate(endDate.getDate() - end)
 			this.endDate = endDate;

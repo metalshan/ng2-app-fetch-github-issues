@@ -1,3 +1,8 @@
+/**
+	This is a simple loader component.
+	This has not been used multiple times due to a bug in Angular beta.
+	CSS is taken from ./styles/loader.css
+*/
 
 import {Component} from 'angular2/core';
 @Component({
