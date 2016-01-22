@@ -1,15 +1,17 @@
 
-import {Component, Input, OnChanges, NgIf} from 'angular2/core';
+import {Component, View, Input, OnChanges} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 import {Loader} from '../loader'
 @Component({
   	selector: 'avatar',
-		directives: [Loader, NgIf],
-		template: `
+	directives: [Loader, CORE_DIRECTIVES],
+	template: `
 		<div>
-			<loader></loader>
-		<img src="{{avatarUrl}}" class="avatar-img" />
+			<loader *ngIf="isDetailsFetchingInProfress"></loader>
+			<img src="{{avatarUrl}}" class="avatar-img" *ngIf="!isDetailsFetchingInProfress && avatarUrl"/>
 		</div>
 	    `
+
 })
 
 export class Avatar implements OnChanges{
@@ -19,6 +21,7 @@ export class Avatar implements OnChanges{
 	avatarUrl: string;
 	isDetailsFetchingInProfress: bool = false;
 	ngOnChanges(inputChanges) {
+		this.avatarUrl = null;
 		if(this.userName)
 			this.createAvatar();
 	}

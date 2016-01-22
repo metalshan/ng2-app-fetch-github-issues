@@ -13,6 +13,6 @@ import {OutputShower} from './output-shower.ts';
 })
 
 export class App {
-	public repoUrl = "";
+	public repoUrl = "https://github.com/metalshan/smartjax";
 }
 

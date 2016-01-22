@@ -1,11 +1,14 @@
 import {Component, Input, OnChanges} from 'angular2/core';
 import {Avatar} from './output-components/avatar';
+import {IssueShower} from './output-components/issue-shower';
+
 @Component({
-	directives: [Avatar],
+	directives: [Avatar, IssueShower],
   	selector: 'output-shower',
 	template: `
 		<div class="whole-width mtl">
 			<avatar [userName]="userName"></avatar>
+			<issue-shower [repoName]="repoName" [userName]="userName"></issue-shower>
 		</div>
 	    `
 })
@@ -14,8 +17,7 @@ export class OutputShower implements OnChanges {
 	@Input() repoUrl: string;
 
 	public userName: string;
-
-	repoName: string;
+	public repoName: string;
 
 	ngOnChanges(inputChanges){
 		this.reset();
@@ -33,7 +35,7 @@ export class OutputShower implements OnChanges {
 		var repoUrl = this.repoUrl; 
 		var userNameRegexp = /github.com[/,:](.*)\//;
 		var match = userNameRegexp.exec(repoUrl);
-		return match && match[1];
+		return match && match[1].split('/')[0];
 	}
 
 	findRepoName(){
@@ -43,8 +45,8 @@ export class OutputShower implements OnChanges {
 		if (!userName)
 			return null;
 
-		var repoNameRegexp = new RegExp("github.com[/,:]" + userName + "/(.*)($/?)");
+		var repoNameRegexp = new RegExp("github.com[/,:]" + userName + "/(.*)($/?)?");
 		var match = repoNameRegexp.exec(repoUrl);
-		return match && match[1] && match[1].replace('.git','');
+		return match && match[1] && match[1].replace('.git','').split('/')[0];
 	}
 }
