@@ -6,11 +6,11 @@ import {Component, Input, OnChanges} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 
 @Component({
-  	selector: 'issue-list',
+	selector: 'issue-list',
 	directives: [CORE_DIRECTIVES],
 	template: `
 		<div class="whole-width mtl">
-			<span>Total open issues: {{totalOpenIssuesNumber}}</span>
+			<span>Total open issues in this time window: {{totalOpenIssuesNumber}}</span>
 			<ul>
 				<li *ngFor="#issue of displayList">{{issue.title}}</li>
 			</ul>
@@ -19,10 +19,10 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 	    `
 })
 
-export class IssueList implements OnChanges{
+export class IssueList implements OnChanges {
 	//all inputs
 	@Input() start: string;
-	@Input() end:string;
+	@Input() end: string;
 	@Input() status: string;
 	@Input() issues: string[];
 
@@ -41,32 +41,33 @@ export class IssueList implements OnChanges{
 
 	//refreshed on input changes
 	//this filters the issues
-	refresh(){
+	refresh() {
 		this.totalOpenIssuesNumber = 0;
 		var list = this.issues;
-		if(list){
+		if (list) {
 			var filteredIssues = [];
-			list.forEach(function (issue) {
+			list.forEach(function(issue) {
 				var issueOpeningDate = new Date(issue.created_at)
-				if (issue.state.toLowerCase() === this.status.toLowerCase()){
-					this.totalOpenIssuesNumber++;
-					if(issueOpeningDate > this.endDate && issueOpeningDate <= this.startDate)
+				if (issue.state.toLowerCase() === this.status.toLowerCase()) {
+					if (issueOpeningDate > this.endDate && issueOpeningDate <= this.startDate){
+						this.totalOpenIssuesNumber++;
 						filteredIssues.push(issue);
+					}
 				}
 			}.bind(this))
 			this.displayList = filteredIssues;
 		}
-		else{
+		else {
 			this.displayList = [];
 		}
 	}
 
 
 	//sets up the date bounderies
-	setupStartEndDate(){
+	setupStartEndDate() {
 		var start = this.start;
 		var end = this.end;
-		
+
 		var startDate = new Date();
 		var endDate = new Date();
 
@@ -75,7 +76,7 @@ export class IssueList implements OnChanges{
 
 		if (!end)
 			this.endDate = new Date(-8640000000000000); //The oldest possible date in JavaScript
-		else{
+		else {
 			endDate.setDate(endDate.getDate() - end)
 			this.endDate = endDate;
 		}
