@@ -3,7 +3,6 @@ An application which will fetch github repo's issues. This is an Angular 2.0 dem
 
 
 ### [Live demo](http://www.voidcanvas.com/demo/ng2-app-fetch-github-issues/)
-Repo: https://github.com/metalshan/ng2-app-fetch-github-issues
 
 ## More can be done:
 	* Make better error handling.
