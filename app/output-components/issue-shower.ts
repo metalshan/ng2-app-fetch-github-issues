@@ -7,6 +7,7 @@
 import {Component, Input, OnChanges} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {Loader} from '../loader';
+import{Utils} from '../utils/utils.ts'
 import {IssueList} from './issue-list';
 import {MenuLink} from './menu-link'
 
@@ -35,7 +36,12 @@ export class IssueShower implements OnChanges{
 	@Input() userName:string;
 	@Input() repoName: string;
 
-	githubRepoInfoApi = "https://api.github.com/repos/:userName/:repoName/issues??state=:state&filter=all&per_page=:perPageItem&page=:pageNumber";
+
+	constructor() {
+		this.utils = new Utils();
+	}
+
+	githubRepoInfoApi = "https://api.github.com/repos/:userName/:repoName/issues?state=:state&filter=all&per_page=:perPageItem&page=:pageNumber";
 
 	//variables
 	issues: string[];
@@ -44,7 +50,8 @@ export class IssueShower implements OnChanges{
 	selectedEnd: string = "1";
 	totalOpenIssues: number = 0;
 	currentCallPage: number = 0;
-
+	utils: Utils;
+	
 	//consts
 	displayIssueType: string = "open";
 	perPageItem: number = 100;
@@ -64,40 +71,60 @@ export class IssueShower implements OnChanges{
 		this.selectedEnd = end;
 	}
 
-	//utils
 
 	//to fetch the issues basing on repoUrl change (which actually end up as userName and repoName change)
 	fetchIssues(){
 		this.totalOpenIssues = 0;
 		this.currentCallPage = 0;
 		this.isDetailsFetchingInProfress = true;
+
+		//do all api param replacements
 		var apiUrl = this.githubRepoInfoApi.replace(":userName", this.userName); //replacing userName
 		apiUrl = apiUrl.replace(":repoName", this.repoName); //replacing repoName
 		apiUrl = apiUrl.replace(":state", this.displayIssueType); //replacing issue type
 		apiUrl = apiUrl.replace(":perPageItem", this.perPageItem); //replacing repoName
 
-		this.callGithubForIssuesAndContinue(apiUrl);
-		
+		//after makking the required api url, I can go ahead with call
+		this.callGithubForIssuesAndContinue(apiUrl);	
 	}
 
+	//This calls the github apis again and again untill 
+	//all the issues are fetched
 	callGithubForIssuesAndContinue(apiUrl){
+		//page number need to be updated
 		this.currentCallPage++;
-		var issuesFetchingPromise = $.ajax(apiUrl.replace(":pageNumber", this.currentCallPage));
+
+		//format url to add client_id and secret
+		var modifiedApiUrl = apiUrl.replace(":pageNumber", this.currentCallPage);
+		modifiedApiUrl = this.utils.formatUrl(modifiedApiUrl);
+
+		//finally the actual call
+		var issuesFetchingPromise = $.ajax(modifiedApiUrl);
 		issuesFetchingPromise.then(function(data) {
-			if(data.length && data.length===this.perPageItem){
+			//if data has length (because it has issues) we need to append that
+			if(data.length)
 				this.issues = this.issues.concat(data);
+
+			if(data.length && data.length===this.perPageItem){
+				//you got a response with full pagination? 
+				//Well, then you may have more in the pocket
+				//let's call again
 				this.callGithubForIssuesAndContinue.apply(this, [apiUrl]);
 			}
 			else{
+				//lets calculate and set the in progress flag to false
 				this.calculateTotalIssues();
 				this.isDetailsFetchingInProfress = false;
 			}
 		}.bind(this), function () {
+			//error in a call will end up making more calls
+			//will do the final calculation
 			this.calculateTotalIssues();
 			this.isDetailsFetchingInProfress = false;
 		}.bind(this));
 	}
 
+	//to calculate the number of issues
 	calculateTotalIssues(){
 		var list = this.issues;
 		if(list){

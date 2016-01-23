@@ -4,7 +4,9 @@
 */
 import {Component, View, Input, OnChanges} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
-import {Loader} from '../loader'
+import {Loader} from '../loader';
+import {Utils} from '../utils/utils.ts';
+
 @Component({
   	selector: 'avatar',
 	directives: [Loader, CORE_DIRECTIVES],
@@ -23,6 +25,11 @@ export class Avatar implements OnChanges{
 	githubUserInfoApi = "https://api.github.com/users/:userName";
 	avatarUrl: string;
 	isDetailsFetchingInProfress: bool = false;
+	utils: Utils;
+
+	constructor(){
+		this.utils = new Utils();
+	}
 
 	//to be called on input changes
 	ngOnChanges(inputChanges) {
@@ -31,7 +38,7 @@ export class Avatar implements OnChanges{
 			this.createAvatar();
 	}
 
-	//utils
+	
 	createAvatar(){
 		var userDetailsPromise = this.fetchGithubUserDetails();
 		userDetailsPromise.then(this.fetchAvatar.bind(this);
@@ -40,7 +47,9 @@ export class Avatar implements OnChanges{
 	//fetch the user details 
 	fetchGithubUserDetails(){
 		this.isDetailsFetchingInProfress = true;
-		return $.ajax(this.githubUserInfoApi.replace(':userName', this.userName));
+		var apiUrl = this.githubUserInfoApi.replace(':userName', this.userName);
+		apiUrl = this.utils.formatUrl(apiUrl);
+		return $.ajax(apiUrl);
 	}
 
 	//get the avatar image link from the fetched user details
