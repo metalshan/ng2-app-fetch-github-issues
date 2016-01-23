@@ -10,3 +10,8 @@ An application which will fetch github repo's issues. This is an Angular 2.0 dem
 	* The regX I used has a little hack. Would like to remove that.
 	* I hardly used any styling.
 	* Client Id, Client secret, urls etc should be in a config file.
+
+
+
+
+
